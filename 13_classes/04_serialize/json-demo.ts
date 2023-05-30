@@ -17,7 +17,7 @@ class Person {
         return this._age;
     }
 
-    set age(value) {
+    set age(value: number) {
         if (value >= 0) {
             this._age = value;
         } else {
