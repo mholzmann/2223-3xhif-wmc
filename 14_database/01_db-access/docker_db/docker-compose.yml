@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+
+  mssql:
+    image: mcr.microsoft.com/mssql/server
+    container_name: mssql
+    command: /bin/bash ./entrypoint.sh
+    ports:
+      - 1433:1433
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_PID=Express
+      - SA_PASSWORD=Passme1234!
+      - RESTORE_DB=Y
+    volumes:
+      - ./data:/var/opt/mssql/data
+      - ./entrypoint.sh:/entrypoint.sh
+      - ./db-init.sh:/db-init.sh
+      - ./db-setup.sql:/db-setup.sql
